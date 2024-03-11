@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment section</title>
+    <style>
+        body {
+            
+            background-image: radial-gradient(#fff8db, #fae38c);
+            background-image: url("https://t4.ftcdn.net/jpg/02/92/20/37/240_F_292203735_CSsyqyS6A4Z9Czd4Msf7qZEhoxjpzZl1.jpg");
+            background-size: cover;
+            
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #payment-form {
+           background-image: radial-gradient(#fff8db, #fae38c);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center; /* Center align the content */
+        }
+        #food-munch-logo {
+            width: 100px; /* Adjust the width as needed */
+            margin-bottom: 10px; /* Add space between the logo and other elements */
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+       <
+    <div class="container">
+        <div id="payment-form" class="bg-light p-4 rounded shadow col-12 col-md-8 col-lg-6">
+            <img id="food-munch-logo"
+                src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-munch-img.png"
+                alt="Food Munch Logo" class="img-fluid mb-4">
+            <h2 class="mb-4">Payment Details</h2>
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" class="form-control" placeholder="Enter card number" required pattern="[0-9]{16}">
+                </div>
+
+                <div class="form-group">
+                    <label for="expiryDate">Expiry Date (MM/YY):</label>
+                    <input type="text" id="expiryDate" class="form-control" placeholder="Enter expiry date" required pattern="(0[1-9]|1[0-2])\/\d{2}">
+                </div>
+
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" class="form-control" placeholder="Enter CVV" required pattern="[0-9]{3,4}">
+                </div>
+
+                <button type="button" class="btn btn-success btn-block" onclick="submitPayment()">Submit Payment</button>
+            </form>
+        </div>
+    </div>
+
+   
+
+    <script>
+        function submitPayment() {
+            var cardNumber = document.getElementById('cardNumber').value;
+            var expiryDate = document.getElementById('expiryDate').value;
+            var cvv = document.getElementById('cvv').value;
+
+            // Basic validation
+            if (!cardNumber || !expiryDate || !cvv) {
+                alert('Please enter all card details.');
+                return;
+            }
+
+            // Validate card number length
+            if (cardNumber.length !== 16) {
+                alert('Card number should be 16 digits.');
+                return;
+            }
+
+            // Validate expiry date format (MM/YY)
+            if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
+                alert('Invalid expiry date format. Please use MM/YY.');
+                return;
+            }
+
+            // Validate CVV length
+            if (cvv.length < 3) {
+                alert('CVV should be a minimum of 3 digits.');
+                return;
+            }
+
+            
+            window.location.href = 'thankyou.html';
+        }
+    </script>
+
+</body>
+
+</html>
